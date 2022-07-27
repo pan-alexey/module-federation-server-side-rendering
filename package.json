@@ -1,0 +1,35 @@
+{
+  "name": "module-federation-ssr",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npm run build-widget && npm run build-app && npm run start",
+    "start": "node ./app-server/dist/index.js",
+    "🖥️": "------------------------------------------------------",
+    "build-app": "npm run build-app:server && npm run build-app:client",
+    "build-app:server": "webpack --config=app-server/webpack.config.js",
+    "build-app:client": "webpack --config=app-client/webpack.config.js",
+    "🚀": "------------------------------------------------------",
+    "build-widget": "npm run build-widget:server && npm run build-widget:client",
+    "build-widget:server": "webpack --config=widget-builder/webpack.config.server.js",
+    "build-widget:client": "webpack --config=widget-builder/webpack.config.client.js"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Pini Tayeb"
+  },
+  "devDependencies": {
+    "@babel/core": "7.18.6",
+    "@babel/preset-env": "7.18.6",
+    "@babel/preset-react": "7.18.6",
+    "babel-loader": "8.2.5",
+    "webpack": "5.72.1",
+    "webpack-cli": "4.9.2",
+    "webpack-node-externals": "^3.0.0",
+    "clean-webpack-plugin": "^4.0.0"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
