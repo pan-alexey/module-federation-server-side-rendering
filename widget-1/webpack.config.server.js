@@ -1,19 +1,17 @@
 var path = require('path');
+var webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const ModuleFederationPlugin = require('webpack').container.ModuleFederationPlugin;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 var serverConfig = {
-  entry: [path.resolve(__dirname, 'src/server.js')],
+  entry: path.resolve(__dirname, './src/widget.server.js'),
   target: 'node',
+  // devtool: 'source-map',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js',
+    path: path.resolve(__dirname, 'widget-1/server'),
   },
   externals: [nodeExternals()],
-  optimization: {
-    minimize: false,
-  },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
@@ -35,9 +33,13 @@ var serverConfig = {
   plugins: [
     new CleanWebpackPlugin(),
     new ModuleFederationPlugin({
-      name: 'website1',
+      name: 'widget-1', // widget name for uniq scope
       library: { type: 'commonjs-module' },
       filename: 'container.js',
+
+      exposes: {
+        'widget': path.resolve(__dirname, './src/widget.server.js'),
+      },
       shared: ["react", "react-dom"],
     }),
   ],

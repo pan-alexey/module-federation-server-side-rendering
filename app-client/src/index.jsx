@@ -3,15 +3,13 @@ import ReactDOM from 'react-dom';
 import App from './App'
 
 (async () => {
-
-  // ReactDOM.render( <App/>, document.getElementById('root'),)
-  // console.log(container)
-  ReactDOM.hydrate(<App />, document.getElementById('root'));
-
-
-  // const root = ReactDOM.createRoot(
-  //   document.getElementById('root')
-  // );
-  // root.render(<App />);
+  const container = document.getElementById('root');
+  if (container.hasChildNodes()) {
+    console.log('hydrate');
+    ReactDOM.hydrate(<App />, document.getElementById('root'));
+  } else {
+    console.log('render');
+    ReactDOM.render(<App />, container);
+  }
 })()
 

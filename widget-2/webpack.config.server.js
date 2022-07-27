@@ -9,7 +9,7 @@ var serverConfig = {
   target: 'node',
   // devtool: 'source-map',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'widget-2/server'),
   },
   externals: [nodeExternals()],
   resolve: {
@@ -33,7 +33,7 @@ var serverConfig = {
   plugins: [
     new CleanWebpackPlugin(),
     new ModuleFederationPlugin({
-      name: 'widget-test', // widget name for uniq scope
+      name: 'widget-2', // widget name for uniq scope
       library: { type: 'commonjs-module' },
       filename: 'container.js',
 

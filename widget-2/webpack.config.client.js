@@ -1,22 +1,29 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-  entry: path.join(__dirname, "./src/index.jsx"),
+  entry: path.join(__dirname, "src", "widget.client.js"),
   mode: 'production',
+  // mode: 'development',
   target: "web",
   output: {
-    filename: "root.js",
-    path: path.resolve(__dirname, "app"),
+    filename: "widget.js",
+    path: path.resolve(__dirname, "widget-2/client"),
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: [
+      '.js',
+      '.jsx'
+    ]
   },
-
   externals: {
     'react': 'React',
-    'react-dom' : 'ReactDOM',
   },
-
+  plugins: [
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 1,
+    }),
+  ],
   module: {
     rules: [
       {

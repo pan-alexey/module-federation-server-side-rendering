@@ -10,7 +10,7 @@ const Widget = ({propValue}) => {
   // const contextValue = context ? useContext(context): 'unknown';
 
   return (<div>
-    <div>Widget (remote) + client</div>
+    <div>Widget 1 (remote) + client</div>
     <div>Widget useState ({count}) <button onClick={() => onClick()}>+</button></div>
     <div>Prop value ({JSON.stringify(propValue)})</div>
   </div>);

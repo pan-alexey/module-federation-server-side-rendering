@@ -2,16 +2,20 @@
   "name": "module-federation-ssr",
   "version": "1.0.0",
   "scripts": {
-    "dev": "npm run build-widget && npm run build-app && npm run start",
+    "dev": "npm run build-widget-1 && npm run build-widget-2 && npm run build-app && npm run start",
     "start": "node ./app-server/dist/index.js",
     "🖥️": "------------------------------------------------------",
     "build-app": "npm run build-app:server && npm run build-app:client",
     "build-app:server": "webpack --config=app-server/webpack.config.js",
     "build-app:client": "webpack --config=app-client/webpack.config.js",
-    "🚀": "------------------------------------------------------",
-    "build-widget": "npm run build-widget:server && npm run build-widget:client",
-    "build-widget:server": "webpack --config=widget-builder/webpack.config.server.js",
-    "build-widget:client": "webpack --config=widget-builder/webpack.config.client.js"
+    "🚀-1": "------------------------------------------------------",
+    "build-widget-1": "npm run build-widget-1:server && npm run build-widget-1:client",
+    "build-widget-1:server": "webpack --config=widget-1/webpack.config.server.js",
+    "build-widget-1:client": "webpack --config=widget-1/webpack.config.client.js",
+    "🚀-2": "------------------------------------------------------",
+    "build-widget-2": "npm run build-widget-2:server && npm run build-widget-2:client",
+    "build-widget-2:server": "webpack --config=widget-2/webpack.config.server.js",
+    "build-widget-2:client": "webpack --config=widget-2/webpack.config.client.js"
   },
   "license": "MIT",
   "author": {

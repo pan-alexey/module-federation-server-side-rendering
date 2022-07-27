@@ -7,8 +7,8 @@ module.exports = {
   // mode: 'development',
   target: "web",
   output: {
-    filename: "widget-1.js",
-    path: path.resolve(__dirname, "client"),
+    filename: "widget.js",
+    path: path.resolve(__dirname, "widget-1/client"),
   },
   resolve: {
     extensions: [
