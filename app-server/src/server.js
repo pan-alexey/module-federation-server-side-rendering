@@ -29,8 +29,11 @@ const app = express();
 app.use('/assets', express.static(process.cwd() + '/app-server/assets'));
 
 app.get('/', async (req, res) => {
-  const Widget1 = await loadComponent('widget-1');
-  const Widget2 = await loadComponent('widget-2');
+  // Preload Widgets
+  const [Widget1, Widget2] = await Promise.all([
+    loadComponent('widget-1'),
+    loadComponent('widget-2')
+  ]);
 
   if (!Widget1 || !Widget2) {
     res.write(renderHtml());
