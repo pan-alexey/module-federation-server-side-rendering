@@ -7,8 +7,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 var serverConfig = {
   entry: path.resolve(__dirname, './src/widget.server.js'),
   target: 'node',
-  // devtool: 'source-map',
   output: {
+    filename: "widget.js",
+    chunkFilename: 'module/chunks.js',
     path: path.resolve(__dirname, 'widget-1/server'),
   },
   externals: [nodeExternals()],
@@ -33,10 +34,10 @@ var serverConfig = {
   plugins: [
     new CleanWebpackPlugin(),
     new ModuleFederationPlugin({
+      // shareScope: 'default',
       name: 'widget-1', // widget name for uniq scope
-      library: { type: 'commonjs-module' },
-      filename: 'container.js',
-
+      library: { type: 'commonjs-module', },
+      filename: 'module/container.js',
       exposes: {
         'widget': path.resolve(__dirname, './src/widget.server.js'),
       },
